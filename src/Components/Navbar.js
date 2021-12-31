@@ -16,9 +16,9 @@ import { Avatar, Button } from '@material-ui/core';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import {
-    MDBNavItem, MDBNavbar, MDBNavbarNav, MDBIcon,
-    MDBBtn, MDBDropdownToggle, MDBDropdown,
-    MDBAvatar, MDBDropdownMenu, MDBDropdownItem
+  MDBNavItem, MDBNavbar, MDBNavbarNav, MDBIcon,
+  MDBBtn, MDBDropdownToggle, MDBDropdown,
+  MDBAvatar, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -34,26 +34,27 @@ const useStyles = makeStyles((theme) => ({
   headerbtn: {
     width: '10%',
     marginLeft: '1%',
-    background: '#ed048c',
+    background: '#CC0948',
     color: 'white',
     minWidth: '100px',
     fontWeight: 900,
     border: 'none',
+    display: 'inline-block'
+  },
+  headerheartbtn: {
+    position: 'inherit',
     
   },
-  headerheartbtn:{
-    position:'fixed',
-    left:'5%'
-  },
   appBar: {
-    backgroundColor: '#ed048c',
+    backgroundColor: '#CC0948',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     boxShadow: 'none',
-    alignItems:'flex-end'
+    alignItems: 'flex-end',
+    position: 'absolute'
 
   },
   appBarShift: {
@@ -129,6 +130,21 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(3.3),
     borderRadius: '50%'
   },
+  apptoolBar:
+  {
+
+    width: '100%'
+  },
+  apptoolBarlogo:
+  {
+
+    width: '80%'
+  },
+  apptoolBarnbtn:
+  {
+
+    width: '20%'
+  }
 }));
 
 function Navbar({ open, handleDrawerOpen }) {
@@ -199,7 +215,9 @@ function Navbar({ open, handleDrawerOpen }) {
       // })}
       className={classes.appBar}
     >
-      <Toolbar>
+      <Toolbar
+
+        className={classes.apptoolBar}>
         {/* --menu icon--  */}
         {/* <IconButton
             color="inherit"
@@ -265,11 +283,13 @@ function Navbar({ open, handleDrawerOpen }) {
                
             </IconButton>  */}
 
-
-       <MDBIcon icon="heartbeat" color="white" size="3x" className={"white-text pr-3" + ' ' + classes.headerheartbtn} />
-       
-        <button className={"form-control" + ' ' + classes.headerbtn} >Login</button>
-        <button className={"form-control" + ' ' + classes.headerbtn} >Sign up</button>
+        <div className={classes.apptoolBarlogo}>
+          <MDBIcon icon="heartbeat" color="white" size="3x" className={"white-text pr-3" + ' ' + classes.headerheartbtn} />
+        </div>
+        <div className={classes.apptoolBarnbtn} >
+          <button className={"form-control" + ' ' + classes.headerbtn} >Login</button>
+          <button className={"form-control" + ' ' + classes.headerbtn} >Sign up</button>
+        </div>
       </Toolbar>
     </AppBar>
 

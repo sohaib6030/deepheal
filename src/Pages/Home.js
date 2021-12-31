@@ -89,7 +89,7 @@ function Home() {
             <div>
                 <div>
                     <h1 className={classes.headertxt}>DeepHeal AI</h1>
-                    <h3 className={classes.headersubtxt}>Help is here.....</h3>
+                    <h3 className={classes.headersubtxt}>Help is here.</h3>
                 </div>
                 <img src={images.header} className={classes.headerimg} />
                 <img src={images.hospital} className={classes.hospitalimg} />

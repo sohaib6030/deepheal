@@ -1,7 +1,7 @@
 
 // iamges constants
-import header from  '../Assets/Images/header.jpg'
-import footer from  '../Assets/Images/footer.jpg'
+import header from  '../Assets/Images/header.png'
+import footer from  '../Assets/Images/footer.png'
 import hospital from  '../Assets/Images/hospital.png'
 import policeman from  '../Assets/Images/policeman.png'
 import service from  '../Assets/Images/service.png'
