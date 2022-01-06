@@ -1,66 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import { Link, useHistory } from 'react-router-dom';
-import Logo from './Logo';
-import { useStateValue } from '../ContextAPI/globalState';
-import { auth, provider } from '../firebase';
-import { Avatar, Button } from '@material-ui/core';
-import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
-import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import React, { useState, useEffect } from "react";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import InputBase from "@material-ui/core/InputBase";
+import Badge from "@material-ui/core/Badge";
+import { Link } from "react-router-dom";
+import Logo from "./Logo";
+import { useStateValue } from "../ContextAPI/globalState";
+import { auth, provider } from "../firebase";
+import { Avatar, Button } from "@material-ui/core";
+import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
+import WatchLaterIcon from "@material-ui/icons/WatchLater";
 import {
-  MDBNavItem, MDBNavbar, MDBNavbarNav, MDBIcon,
-  MDBBtn, MDBDropdownToggle, MDBDropdown,
-  MDBAvatar, MDBDropdownMenu, MDBDropdownItem
+  MDBNavItem,
+  MDBNavbar,
+  MDBNavbarNav,
+  MDBIcon,
+  MDBBtn,
+  MDBDropdownToggle,
+  MDBDropdown,
+  MDBAvatar,
+  MDBDropdownMenu,
+  MDBDropdownItem,
 } from "mdbreact";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'mdbreact/dist/css/mdb.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "mdbreact/dist/css/mdb.css";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
     // overflow: 'hidden'
   },
   headerbtn: {
-    width: '10%',
-    marginLeft: '1%',
-    background: '#CC0948',
-    color: 'white',
-    minWidth: '100px',
+    width: "10%",
+    marginLeft: "1%",
+    background: "#CC0948",
+    color: "white",
+    minWidth: "100px",
     fontWeight: 900,
-    border: 'none',
-    display: 'inline-block'
+    border: "none",
+    display: "inline-block",
   },
   headerheartbtn: {
-    position: 'inherit',
-    
+    position: "inherit",
   },
   appBar: {
-    backgroundColor: '#CC0948',
+    backgroundColor: "#CC0948",
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    boxShadow: 'none',
-    alignItems: 'flex-end',
-    position: 'absolute'
-
+    boxShadow: "none",
+    alignItems: "flex-end",
+    position: "absolute",
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -69,54 +74,53 @@ const useStyles = makeStyles((theme) => ({
     // marginRight: 36,
   },
   hide: {
-    display: 'none',
+    display: "none",
   },
   search: {
-    position: 'relative',
+    position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.secondary.main,
-    width: '50%',
-    margin: 'auto',
-    display: 'flex'
+    width: "50%",
+    margin: "auto",
+    display: "flex",
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   inputRoot: {
-    color: 'inherit',
-    width: '100%'
+    color: "inherit",
+    width: "100%",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     // paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
   backgroundIcons: {
     backgroundColor: theme.palette.secondary.main,
-    marginRight: theme.spacing(0.5)
+    marginRight: theme.spacing(0.5),
   },
   iconsNavbar: {
     backgroundColor: theme.palette.secondary.main,
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
   },
   toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
@@ -128,83 +132,68 @@ const useStyles = makeStyles((theme) => ({
   small: {
     width: theme.spacing(3.3),
     height: theme.spacing(3.3),
-    borderRadius: '50%'
+    borderRadius: "50%",
   },
-  apptoolBar:
-  {
-
-    width: '100%'
+  apptoolBar: {
+    width: "100%",
   },
-  apptoolBarlogo:
-  {
-
-    width: '80%'
+  apptoolBarlogo: {
+    width: "80%",
   },
-  apptoolBarnbtn:
-  {
-
-    width: '20%'
-  }
+  apptoolBarnbtn: {
+    width: "20%",
+  },
 }));
 
 function Navbar({ open, handleDrawerOpen }) {
   const classes = useStyles();
-  const history = useHistory()
-  const [searchText, setSearchText] = useState('')
 
-  // get data from global state  
-  const {
-    userDetails,
-    setUserDetails,
-    setSearch,
-    watchLater,
-    subscribes } = useStateValue();
+  const [searchText, setSearchText] = useState("");
 
+  // get data from global state
+  const { userDetails, setUserDetails, setSearch, watchLater, subscribes } =
+    useStateValue();
 
-  // handle Auth 
+  // handle Auth
   async function handleSignIn() {
-    await auth.signInWithPopup(provider).then(res => {
-      setUserDetails(res.user);
-    }).catch(err => {
-      alert(err.message);
-    })
+    await auth
+      .signInWithPopup(provider)
+      .then((res) => {
+        setUserDetails(res.user);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   }
 
-  // on Auth change 
+  // on Auth change
   useEffect(() => {
     async function onAuthChange() {
       auth.onAuthStateChanged((user) => {
         if (user) {
           setUserDetails(user);
         }
-      })
+      });
     }
 
-    onAuthChange()
+    onAuthChange();
+  }, []);
 
-  }, [])
+  // handle search
+  // const handleSearch = (e) => {
+  //   if (searchText.length > 0) {
+  //     e.preventDefault();
+  //     setSearch(searchText);
+  //     history.push("/search");
+  //   } else {
+  //     e.preventDefault();
+  //     history.push("/");
+  //   }
+  // };
 
-
-  // handle search 
-  const handleSearch = (e) => {
-    if (searchText.length > 0) {
-      e.preventDefault();
-      setSearch(searchText);
-      history.push('/search');
-    } else {
-      e.preventDefault();
-      history.push('/')
-    }
-  }
-
-  const goToAddVideo = () => {
-
-
-    history.push(`/add`);
-
-
-  }
-
+  // const goToAddVideo = () => {
+  //   history.push(`/add`);
+  // };
 
   return (
     <AppBar
@@ -215,9 +204,7 @@ function Navbar({ open, handleDrawerOpen }) {
       // })}
       className={classes.appBar}
     >
-      <Toolbar
-
-        className={classes.apptoolBar}>
+      <Toolbar className={classes.apptoolBar}>
         {/* --menu icon--  */}
         {/* <IconButton
             color="inherit"
@@ -284,18 +271,42 @@ function Navbar({ open, handleDrawerOpen }) {
             </IconButton>  */}
 
         <div className={classes.apptoolBarlogo}>
-          <MDBIcon icon="heartbeat" color="white" size="3x" className={"white-text pr-3" + ' ' + classes.headerheartbtn} />
+          <Link
+            to="/"
+            style={{ color: "white", textDecoration: "none" }}
+            className="example"
+          >
+            <MDBIcon
+              icon="heartbeat"
+              color="white"
+              size="3x"
+              className={"white-text pr-3" + " " + classes.headerheartbtn}
+            />
+          </Link>
         </div>
-        <div className={classes.apptoolBarnbtn} >
-          <button className={"form-control" + ' ' + classes.headerbtn} >Login</button>
-          <button className={"form-control" + ' ' + classes.headerbtn} >Sign up</button>
+        <div className={classes.apptoolBarnbtn}>
+          <button className={"form-control" + " " + classes.headerbtn}>
+            <Link
+              to="/Login"
+              style={{ color: "white", textDecoration: "none" }}
+              className="example"
+            >
+              Login
+            </Link>
+          </button>
+          <button className={"form-control" + " " + classes.headerbtn}>
+            <Link
+              to="/Register"
+              style={{ color: "white", textDecoration: "none" }}
+              className="example"
+            >
+              Register
+            </Link>
+          </button>
         </div>
       </Toolbar>
     </AppBar>
-
   );
 }
-
-
 
 export default Navbar;

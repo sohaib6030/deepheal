@@ -1,38 +1,32 @@
-import { createTheme } from '@material-ui/core/styles';
-import { useStateValue } from '../ContextAPI/globalState';
-import { ThemeProvider } from '@material-ui/styles';
+import { createTheme } from "@material-ui/core/styles";
+import { useStateValue } from "../ContextAPI/globalState";
+import { ThemeProvider } from "@material-ui/styles";
 
-function CreateThemeProvider ({children}) {
-  // get data from global state  
-  const {darkMode}  = useStateValue();
+function CreateThemeProvider({ children }) {
+  // get data from global state
+  const { darkMode } = useStateValue();
 
-  // create theme  
+  // create theme
   const Theme = createTheme({
     palette: {
-      type: darkMode ? 'dark' : 'light',
+      type: darkMode ? "red" : "light",
       primary: {
-        main: darkMode ? '#252525':'#FFFFFF',
+        main: darkMode ? "red" : "#FFFFFF",
       },
       secondary: {
-        main:darkMode ? '#181818':'#ebebeb',
+        main: darkMode ? "red" : "#ebebeb",
       },
       background: {
-        default: darkMode ? '#181818':'#ebebeb',
+        default: darkMode ? "red" : "#ebebeb",
       },
     },
-    shape:{
-      borderRadius:'20px'
-    }
+    shape: {
+      borderRadius: "20px",
+    },
   });
 
-  // theme provider 
-  return (
-    <ThemeProvider theme={Theme}>
-      {children}
-    </ThemeProvider>
-
-  )
-
+  // theme provider
+  return <ThemeProvider theme={Theme}>{children}</ThemeProvider>;
 }
 
-export default CreateThemeProvider
+export default CreateThemeProvider;
