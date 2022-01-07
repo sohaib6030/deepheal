@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.js": "/static/js/main.0ea44439.chunk.js",
+    "main.js.map": "/static/js/main.0ea44439.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.35aa463f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.35aa463f.js.map",
+    "static/css/2.f967bcb5.chunk.css": "/static/css/2.f967bcb5.chunk.css",
+    "static/js/2.14cbca6b.chunk.js": "/static/js/2.14cbca6b.chunk.js",
+    "static/js/2.14cbca6b.chunk.js.map": "/static/js/2.14cbca6b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.f967bcb5.chunk.css.map": "/static/css/2.f967bcb5.chunk.css.map",
+    "static/js/2.14cbca6b.chunk.js.LICENSE.txt": "/static/js/2.14cbca6b.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/static/media/arrow_right.f7c6ac6d.svg",
+    "static/media/all.min.css": "/static/media/fa-solid-900.eeccf4f6.woff",
+    "static/media/footer.266b80db.png": "/static/media/footer.266b80db.png",
+    "static/media/header.fccd38c4.png": "/static/media/header.fccd38c4.png",
+    "static/media/hospital.96734282.png": "/static/media/hospital.96734282.png",
+    "static/media/policeman.cc69f9d2.png": "/static/media/policeman.cc69f9d2.png",
+    "static/media/service.ff1a9c4c.png": "/static/media/service.ff1a9c4c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.35aa463f.js",
+    "static/css/2.f967bcb5.chunk.css",
+    "static/js/2.14cbca6b.chunk.js",
+    "static/js/main.0ea44439.chunk.js"
+  ]
+}
